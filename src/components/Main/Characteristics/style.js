@@ -7,7 +7,7 @@ export const CharacteristicsContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 80vh;
-  gap: 64px;
+ 
 `;
 export const pokemonContainer = styled.div`
   background-color: #403d3d;
@@ -47,10 +47,21 @@ export const statsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  h1{
+    margin-bottom: 80px;
+  }
 `;
 export const stats = styled.div`
   display: flex;
   flex-direction: column;
+  div{
+    display: flex;
+    flex-direction: row;
+    margin-left: 64px;
+    span{
+      width: 26.8px;
+    }
+  }
 `;
 
 
