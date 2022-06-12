@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { ApiProvider } from "./Context/ApiContext";
+import { ViewProvider } from "./Context/ViewContext";
+import { useState, useContext } from "react";
+import { GlobalStyle } from "./GlobalStyle";
+import Header from "./components/Header";
+import { ViewContext } from "./Context/ViewContext";
+import Main from "./components/Main";
 
 function App() {
+  // const character = useContext(ViewContext);
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ApiProvider>
+        <Header></Header>
+        <Main></Main>
+      </ApiProvider>
+      <GlobalStyle />
     </div>
   );
 }
