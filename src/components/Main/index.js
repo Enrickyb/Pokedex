@@ -1,32 +1,36 @@
-import React, {useState} from 'react'
-import Cards from './Cards'
-import Pagination from './Pagination'
-import * as C from './style'
-import Characteristics from './Characteristics'
+import React, { useState, useContext, useEffect } from "react";
+import Cards from "./Cards";
+import * as C from "./style";
+import Characteristics from "./Characteristics";
+import { ApiContext } from "../../Context/ApiContext";
+
 export default function Main() {
   const [character, setCharacter] = useState(false);
-  const [currentPokemon, setCurrentPokemon] = useState()
+  const [currentPokemon, setCurrentPokemon] = useState();
+
+  
 
   function onSetCharacter() {
     if (character) setCharacter(false);
     else setCharacter(true);
-
   }
-  function onSetCurrentPokemon(key){
-    setCurrentPokemon(key)
-    
+  function onSetCurrentPokemon(key) {
+    setCurrentPokemon(key);
   }
 
   return (
     <C.Main>
-      
       {character ? (
-          <Characteristics onSetCharacter={onSetCharacter} currentPokemon={currentPokemon}/>
-        ) : (
-          <Cards onSetCharacter={onSetCharacter} onSetCurrentPokemon={onSetCurrentPokemon}/>
-        )}
-      
-      <Pagination/>
+        <Characteristics
+          onSetCharacter={onSetCharacter}
+          currentPokemon={currentPokemon}
+        />
+      ) : (
+        <Cards
+          onSetCharacter={onSetCharacter}
+          onSetCurrentPokemon={onSetCurrentPokemon}
+        />
+      ) } 
     </C.Main>
-  )
+  );
 }

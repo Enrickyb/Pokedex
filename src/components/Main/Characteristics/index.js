@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { ApiContext } from "../../../Context/ApiContext";
 import * as C from "./style";
 import ProgressBar from "./ProgressBar";
+import { IoMdArrowBack } from "react-icons/io";
+
 
 export default function Characteristics(props) {
-  const [pokeData] = useContext(ApiContext);
-  // const skills = ["HP", "ATK", "DEF", "SPD", "EXP"];
+  const {pokeData} = useContext(ApiContext);
   const [hpValue, setHpValue] = useState(0);
   const [atkValue, setAtkValue] = useState(0);
   const [defValue, setDefValue] = useState(0);
@@ -27,18 +28,18 @@ export default function Characteristics(props) {
       setExpValue(exp);
     }
     updateValues();
-  }, []);
+  }, [pokeData, props.currentPokemon]);
 
   return (
     <div>
-      <button
+      
+      <C.returnButton
         onClick={() => {
           props.onSetCharacter();
         }}
       >
-        {" "}
-        voltar{" "}
-      </button>
+        <IoMdArrowBack size={35}/>
+      </C.returnButton>
       <C.CharacteristicsContainer>
         <C.pokemonContainer>
           <img
@@ -61,23 +62,23 @@ export default function Characteristics(props) {
           <h1>Base Stats</h1>
           <C.stats>
             <div>
-              <span>HP</span>
+              <p>HP</p>
               <ProgressBar value={hpValue} max={300}></ProgressBar>
             </div>
             <div>
-              <span>ATK</span>
+              <p>ATK</p>
               <ProgressBar value={atkValue} max={300}></ProgressBar>
             </div>
             <div>
-              <span>DEF</span>
+              <p>DEF</p>
               <ProgressBar value={defValue} max={300}></ProgressBar>
             </div>
             <div>
-              <span>SPD</span>
+              <p>SPD</p>
               <ProgressBar value={spdValue} max={300}></ProgressBar>
             </div>
             <div>
-              <span>EXP</span>
+              <p>EXP</p>
               <ProgressBar value={expValue} max={300}></ProgressBar>
             </div>
           </C.stats>

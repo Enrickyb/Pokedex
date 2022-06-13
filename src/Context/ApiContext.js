@@ -3,27 +3,24 @@ import { getPokes, getPokemon } from "../data/pokeList";
 export const ApiContext = createContext();
 
 export function ApiProvider(props) {
+  //pagination
+  const limit = 36;
+  const total = 1120;
+  const [offset, setOffset] = useState(0);
+  //fetch
   const [pokeData, setPokeData] = useState([]);
-  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon?limit=36");
-  const [nextUrl, setNextUrl] = useState("");
-  const [prevUrl, setPrevUrl] = useState("");
-
+  const [loading, setLoading] = useState(true);
+  const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
 
   useEffect(() => {
-    
     async function fetchPokeList() {
-      
       let res = await getPokes(url);
-      setNextUrl(res.next);
-      setPrevUrl(res.previous);
       await loadingPokeList(res.results);
-      
-      
+      setLoading(false);
     }
- 
+
     fetchPokeList();
-    
-  }, [url]);
+  }, [offset, url]);
 
   const loadingPokeList = async (data) => {
     let pokemonData = await Promise.all(
@@ -32,11 +29,21 @@ export function ApiProvider(props) {
         return pokemonRecord;
       })
     );
-    
+
     setPokeData(pokemonData);
   };
-  
+
   return (
-    <ApiContext.Provider value={[pokeData, url, nextUrl, prevUrl, setNextUrl, setPrevUrl]}>{props.children}</ApiContext.Provider>
+    <ApiContext.Provider
+      value={{
+        pokeData: pokeData,
+        offSet: [offset, setOffset],
+        LIMIT: [limit],
+        Total: [total],
+        load: [loading, setLoading],
+      }}
+    >
+      {props.children}
+    </ApiContext.Provider>
   );
 }
