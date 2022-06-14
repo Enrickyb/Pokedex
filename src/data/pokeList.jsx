@@ -6,6 +6,7 @@ export const getPokes = async (url) => {
         result(data);
       });
   });
+  
 };
 
 export const getPokemon = async (url) => {
