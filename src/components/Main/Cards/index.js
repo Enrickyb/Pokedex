@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import * as C from "./style";
-import { ApiContext } from "../../../Context/ApiContext";
+import { ApiContext } from "../../../context/ApiContext";
 import Pagination from "./Pagination/index";
 export default function Cards(props) {
   const {pokeData} = useContext(ApiContext);

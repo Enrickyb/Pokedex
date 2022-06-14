@@ -1,14 +1,12 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import Cards from "./Cards";
 import * as C from "./style";
 import Characteristics from "./Characteristics";
-import { ApiContext } from "../../Context/ApiContext";
+
 
 export default function Main() {
   const [character, setCharacter] = useState(false);
   const [currentPokemon, setCurrentPokemon] = useState();
-
-  
 
   function onSetCharacter() {
     if (character) setCharacter(false);

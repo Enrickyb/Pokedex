@@ -17,6 +17,7 @@ export function ApiProvider(props) {
       let res = await getPokes(url);
       await loadingPokeList(res.results);
       setLoading(false);
+
     }
 
     fetchPokeList();

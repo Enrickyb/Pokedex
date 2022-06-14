@@ -1,4 +1,4 @@
-import { ApiProvider } from "./Context/ApiContext";
+import { ApiProvider } from "./context/ApiContext";
 import { GlobalStyle } from "./GlobalStyle";
 import Header from "./components/Header";
 

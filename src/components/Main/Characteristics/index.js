@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ApiContext } from "../../../Context/ApiContext";
+import { ApiContext } from "../../../context/ApiContext";
 import * as C from "./style";
 import ProgressBar from "./ProgressBar";
 import { IoMdArrowBack } from "react-icons/io";
