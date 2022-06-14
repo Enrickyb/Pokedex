@@ -1,9 +1,9 @@
 import React from "react";
 import * as C from "./style";
-import PropTypes from 'prop-types';
 
-export default function ProgressBar(props) {
- 
+
+export default function ProgressBar(props: any) {
+  
   
     return (
     <C.SkillBarsContainer value={props.value}>
@@ -13,7 +13,4 @@ export default function ProgressBar(props) {
     </C.SkillBarsContainer>
   );
 }
-ProgressBar.propTypes= {
-    value: PropTypes.number.isRequired,
-    max: PropTypes.number,
-}
+

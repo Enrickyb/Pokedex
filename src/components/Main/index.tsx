@@ -5,14 +5,14 @@ import Characteristics from "./Characteristics";
 
 
 export default function Main() {
-  const [character, setCharacter] = useState(false);
-  const [currentPokemon, setCurrentPokemon] = useState();
+  const [character, setCharacter] = useState<boolean>(false);
+  const [currentPokemon, setCurrentPokemon] = useState<number>();
 
-  function onSetCharacter() {
+  function onSetCharacter() : void {
     if (character) setCharacter(false);
     else setCharacter(true);
   }
-  function onSetCurrentPokemon(key) {
+  function onSetCurrentPokemon(key : number): void {
     setCurrentPokemon(key);
   }
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const SkillBarsContainer = styled.div`
+
+export const SkillBarsContainer = styled.div<{value:number}>`
   display: flex;
   flex-direction: row;
   

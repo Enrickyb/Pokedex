@@ -5,37 +5,45 @@ import ProgressBar from "./ProgressBar";
 import { IoMdArrowBack } from "react-icons/io";
 
 
-export default function Characteristics(props) {
-  const {pokeData} = useContext(ApiContext);
-  const [hpValue, setHpValue] = useState(0);
-  const [atkValue, setAtkValue] = useState(0);
-  const [defValue, setDefValue] = useState(0);
-  const [spdValue, setSpdValue] = useState(0);
-  const [expValue, setExpValue] = useState(0);
+export default function Characteristics(props : any){
 
+  const {onSetCharacter, currentPokemon} = props
+  const {pokeData} = useContext(ApiContext);
+
+  const currentPoke = pokeData[currentPokemon]
+ 
+  const [hpValue, setHpValue] = useState<number>(0);
+  const [atkValue, setAtkValue] = useState<number>(0);
+  const [defValue, setDefValue] = useState<number>(0);
+  const [spdValue, setSpdValue] = useState<number>(0);
+  const [expValue, setExpValue] = useState<number>(0);
+  
+  
   useEffect(() => {
     function updateValues() {
-      const hp = pokeData[props.currentPokemon].stats[0].base_stat;
-      const atk = pokeData[props.currentPokemon].stats[1].base_stat;
-      const def = pokeData[props.currentPokemon].stats[2].base_stat;
-      const spd = pokeData[props.currentPokemon].stats[3].base_stat;
-      const exp = pokeData[props.currentPokemon].stats[4].base_stat;
-
-      setHpValue(hp);
-      setAtkValue(atk);
-      setDefValue(def);
-      setSpdValue(spd);
-      setExpValue(exp);
+      const stats = { 
+        hp: currentPoke.stats[0].base_stat,
+        atk: currentPoke.stats[1].base_stat,
+        def: currentPoke.stats[2].base_stat,
+        spd: currentPoke.stats[3].base_stat,
+        exp: currentPoke.stats[4].base_stat,
+      }  
+      
+      setHpValue(stats.hp);
+      setAtkValue(stats.atk);
+      setDefValue(stats.def);
+      setSpdValue(stats.spd);
+      setExpValue(stats.exp);
     }
     updateValues();
-  }, [pokeData, props.currentPokemon]);
+  }, [pokeData, currentPoke]);
 
   return (
     <div>
       
       <C.returnButton
         onClick={() => {
-          props.onSetCharacter();
+          onSetCharacter();
         }}
       >
         <IoMdArrowBack size={35}/>
@@ -43,15 +51,15 @@ export default function Characteristics(props) {
       <C.CharacteristicsContainer>
         <C.pokemonContainer>
           <img
-            src={pokeData[props.currentPokemon].sprites.front_default}
+            src={pokeData[currentPokemon].sprites.front_default}
             alt="Pokemon"
           ></img>
           <C.pokemonName>
-            {pokeData[props.currentPokemon].name[0].toUpperCase() +
-              pokeData[props.currentPokemon].name.substring(1)}
+            {pokeData[currentPokemon].name[0].toUpperCase() +
+              pokeData[currentPokemon].name.substring(1)}
           </C.pokemonName>
           <C.pokemonTypeContainer>
-            {pokeData[props.currentPokemon].types.map((type, key) => (
+            {pokeData[currentPokemon].types.map((type : any, key : number) => (
               <C.pokemonType key={key}>
                 {type.type.name[0].toUpperCase() + type.type.name.substring(1)}
               </C.pokemonType>

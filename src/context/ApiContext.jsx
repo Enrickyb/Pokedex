@@ -17,11 +17,11 @@ export function ApiProvider(props) {
       let res = await getPokes(url);
       await loadingPokeList(res.results);
       setLoading(false);
-
+      console.log(res)
     }
 
     fetchPokeList();
-  }, [offset, url]);
+  }, [url]);
 
   const loadingPokeList = async (data) => {
     let pokemonData = await Promise.all(
@@ -30,7 +30,7 @@ export function ApiProvider(props) {
         return pokemonRecord;
       })
     );
-
+      console.log(pokemonData)
     setPokeData(pokemonData);
   };
 
