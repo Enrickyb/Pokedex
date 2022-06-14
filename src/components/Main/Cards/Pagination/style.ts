@@ -14,7 +14,7 @@ export const pagination = styled.ul`
     margin-left: 8px;
   }
 `;
-export const paginationButtons = styled.button<{focusColor: string}>`
+export const paginationButtons = styled.button<{focusColor: string | null}>`
   width: 32px;
   height: 32px;
   font-weight: 700;

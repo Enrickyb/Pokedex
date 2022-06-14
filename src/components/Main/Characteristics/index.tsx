@@ -3,13 +3,12 @@ import { ApiContext } from "../../../context/ApiContext";
 import * as C from "./style";
 import ProgressBar from "./ProgressBar";
 import { IoMdArrowBack } from "react-icons/io";
-
+import { ApiContextType } from "../../../types/ApiContextTypes";
 
 export default function Characteristics(props : any){
 
   const {onSetCharacter, currentPokemon} = props
-  const {pokeData} = useContext(ApiContext);
-
+  const {pokeData} = useContext(ApiContext) as ApiContextType;
   const currentPoke = pokeData[currentPokemon]
  
   const [hpValue, setHpValue] = useState<number>(0);

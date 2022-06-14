@@ -8,7 +8,7 @@ export const CharacteristicsContainer = styled.div`
   justify-content: center;
   height: 80vh;
   padding: 25px;
-  @media (max-width: 1216px) {
+  @media (max-width: 1390px) {
     flex-direction: column;
     height: 100%;
     gap: 50px;

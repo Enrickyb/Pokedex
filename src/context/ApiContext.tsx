@@ -1,12 +1,14 @@
 import React, { createContext, useState, useEffect } from "react";
+import { ApiContextType } from "../types/ApiContextTypes";
 import { getPokes, getPokemon } from "../data/pokeList";
-export const ApiContext = createContext();
 
-export function ApiProvider(props) {
+export const ApiContext = createContext<ApiContextType | null>(null);
+
+export function ApiProvider(props: any) {
   //pagination
-  const limit = 36;
-  const total = 1120;
-  const [offset, setOffset] = useState(0);
+  const limit: number = 36;
+  const total: number = 1120;
+  const [offset, setOffset] = useState<number>(0);
   //fetch
   const [pokeData, setPokeData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,23 +16,20 @@ export function ApiProvider(props) {
 
   useEffect(() => {
     async function fetchPokeList() {
-      let res = await getPokes(url);
+      let res: any = await getPokes(url);
       await loadingPokeList(res.results);
       setLoading(false);
-      console.log(res)
     }
-
     fetchPokeList();
   }, [url]);
 
-  const loadingPokeList = async (data) => {
-    let pokemonData = await Promise.all(
+  const loadingPokeList = async (data: Array<{ url: string }>) => {
+    let pokemonData: any = await Promise.all(
       data.map(async (pokemon) => {
         let pokemonRecord = await getPokemon(pokemon.url);
         return pokemonRecord;
       })
     );
-      console.log(pokemonData)
     setPokeData(pokemonData);
   };
 

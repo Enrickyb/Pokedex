@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { ApiContext } from "../../../../context/ApiContext";
 import * as C from "./style";
-
+import { ApiContextType } from "../../../../types/ApiContextTypes";
 const MAX_ITEMS = 5;
 let MAX_LEFT = (MAX_ITEMS - 1) / 2;
 
 export default function Pagination() {
-  const { offSet, LIMIT, Total } = useContext(ApiContext);
+  const { offSet, LIMIT, Total } = useContext(ApiContext) as ApiContextType;
   const [offset, setOffset] = offSet;
-  const limit = LIMIT;
-  const total = Total;
+  const limit: any = LIMIT;
+  const total: any = Total;
 
   //se o offset não for zero divido pelo limit, se for zero to na pagina 1
   const current = offset ? offset / limit + 1 : 1;
@@ -17,9 +17,10 @@ export default function Pagination() {
   const pages = Math.ceil(total / limit - 1);
   //primeiro botão da paginação (sem resultado negativo)
   const maxFirst = Math.max(pages - (MAX_ITEMS - 1), 1);
+  
   const first = Math.min(Math.max(current - MAX_LEFT, 1), maxFirst);
 
-  function PageChange(page) {
+  function PageChange(page: number) {
     setOffset((page - 1) * limit);
   }
 
@@ -44,7 +45,7 @@ export default function Pagination() {
             <C.paginationButtons
               focusColor={page === current ? "#D53B47" : null}
               onClick={() => {
-                PageChange(page);
+                PageChange(page); 
               }}
             >
               {page}
