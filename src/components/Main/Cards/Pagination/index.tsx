@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
 import { ApiContext } from "../../../../context/ApiContext";
 import * as C from "./style";
-import { ApiContextType } from "../../../../types/ApiContextTypes";
+import { ApiContextType } from "../../../../context/ApiContext";
+
+
 const MAX_ITEMS = 5;
 let MAX_LEFT = (MAX_ITEMS - 1) / 2;
 
 export default function Pagination() {
   const { offSet, LIMIT, Total } = useContext(ApiContext) as ApiContextType;
   const [offset, setOffset] = offSet;
-  const limit: any = LIMIT;
-  const total: any = Total;
+  const limit: number = LIMIT;
+  const total: number = Total;
 
   //se o offset não for zero divido pelo limit, se for zero to na pagina 1
   const current = offset ? offset / limit + 1 : 1;

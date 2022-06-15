@@ -3,7 +3,9 @@ import { ApiContext } from "../../../context/ApiContext";
 import * as C from "./style";
 import ProgressBar from "./ProgressBar";
 import { IoMdArrowBack } from "react-icons/io";
-import { ApiContextType } from "../../../types/ApiContextTypes";
+import { ApiContextType } from "../../../context/ApiContext";
+
+  const MAX = 200
 
 export default function Characteristics(props : any){
 
@@ -70,23 +72,23 @@ export default function Characteristics(props : any){
           <C.stats>
             <div>
               <p>HP</p>
-              <ProgressBar value={hpValue} max={300}></ProgressBar>
+              <ProgressBar value={hpValue} max={MAX}></ProgressBar>
             </div>
             <div>
               <p>ATK</p>
-              <ProgressBar value={atkValue} max={300}></ProgressBar>
+              <ProgressBar value={atkValue} max={MAX}></ProgressBar>
             </div>
             <div>
               <p>DEF</p>
-              <ProgressBar value={defValue} max={300}></ProgressBar>
+              <ProgressBar value={defValue} max={MAX}></ProgressBar>
             </div>
             <div>
               <p>SPD</p>
-              <ProgressBar value={spdValue} max={300}></ProgressBar>
+              <ProgressBar value={spdValue} max={MAX}></ProgressBar>
             </div>
             <div>
               <p>EXP</p>
-              <ProgressBar value={expValue} max={300}></ProgressBar>
+              <ProgressBar value={expValue} max={MAX}></ProgressBar>
             </div>
           </C.stats>
         </C.statsContainer>

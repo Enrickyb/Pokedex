@@ -1,6 +1,15 @@
 import React, { createContext, useState, useEffect } from "react";
-import { ApiContextType } from "../types/ApiContextTypes";
+
 import { getPokes, getPokemon } from "../data/pokeList";
+
+export type ApiContextType = {
+  pokeData: any;
+  offSet: any;
+  LIMIT: number;
+  Total: number;
+  load: any;
+};
+
 
 export const ApiContext = createContext<ApiContextType | null>(null);
 
@@ -38,8 +47,8 @@ export function ApiProvider(props: any) {
       value={{
         pokeData: pokeData,
         offSet: [offset, setOffset],
-        LIMIT: [limit],
-        Total: [total],
+        LIMIT: limit,
+        Total: total,
         load: [loading, setLoading],
       }}
     >
