@@ -60,6 +60,9 @@ export const pokemonContainer = styled.div`
 `;
 export const pokemonName = styled.h1`
   margin-bottom: 23px;
+::first-letter{
+  text-transform: uppercase;
+}
 `;
 export const pokemonTypeContainer = styled.div`
   display: flex;
@@ -75,6 +78,8 @@ export const pokemonType = styled.p`
   justify-content: center;
   align-items: center;
   font-family: "Inter", sans-serif;
+
+
 `;
 
 export const statsContainer = styled.div`

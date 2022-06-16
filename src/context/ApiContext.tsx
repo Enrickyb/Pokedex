@@ -1,33 +1,35 @@
-import React, { createContext, useState, useEffect } from "react";
-
+import { createContext, useState, useEffect } from "react";
 import { getPokes, getPokemon } from "../data/pokeList";
 
-export type ApiContextType = {
-  pokeData: any;
+type pokeDataType = Array<{
+  name: string;
+  stats: Array<{ base_stat: number; stat: { name: string } }>;
+  types: Array<{ type: { name: string } }>;
+  sprites: { front_default: string };
+}>;
+type ApiContextType = {
+  pokeData: pokeDataType;
   offSet: any;
-  LIMIT: number;
-  Total: number;
-  load: any;
+  onSetOffset: any;
+  limit: number;
+  total: number;
 };
 
-
-export const ApiContext = createContext<ApiContextType | null>(null);
+export const ApiContext = createContext<ApiContextType>({} as ApiContextType);
 
 export function ApiProvider(props: any) {
   //pagination
-  const limit: number = 36;
-  const total: number = 1120;
-  const [offset, setOffset] = useState<number>(0);
+  const limit = 36;
+  const total = 1120;
+  const [offSet, setOffset] = useState<number>(0);
   //fetch
   const [pokeData, setPokeData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
+  const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offSet}`;
 
   useEffect(() => {
     async function fetchPokeList() {
-      let res: any = await getPokes(url);
+      let res = await getPokes(url);
       await loadingPokeList(res.results);
-      setLoading(false);
     }
     fetchPokeList();
   }, [url]);
@@ -39,17 +41,21 @@ export function ApiProvider(props: any) {
         return pokemonRecord;
       })
     );
+
     setPokeData(pokemonData);
   };
+  function onSetOffset(offset: number) {
+    setOffset(offset);
+  }
 
   return (
     <ApiContext.Provider
       value={{
-        pokeData: pokeData,
-        offSet: [offset, setOffset],
-        LIMIT: limit,
-        Total: total,
-        load: [loading, setLoading],
+        pokeData,
+        offSet,
+        onSetOffset,
+        limit,
+        total,
       }}
     >
       {props.children}

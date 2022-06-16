@@ -1,7 +1,10 @@
-import React from "react";
 import * as Styled from "./style";
 
-export default function ProgressBar(props: any) {
+interface Props{
+ value: number
+}
+
+export default function ProgressBar(props: Props) { //precisa tipar
   return (
     <Styled.SkillBarsContainer>
       <Styled.SkillBar>
