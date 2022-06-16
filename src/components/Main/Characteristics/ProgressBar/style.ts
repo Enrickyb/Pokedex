@@ -1,47 +1,36 @@
 import styled from "styled-components";
 
-
-export const SkillBarsContainer = styled.div<{value:number}>`
+const SkillBarsContainer = styled.div`
   display: flex;
   flex-direction: row;
+`;
+const SkillBar = styled.div`
+  width: 596px;
+  height: 22px;
+  margin-bottom: 48px;
+  appearance: none;
+  margin-right: 10px;
+  margin-left: 30px;
+  background-color: white;
+  border-radius: 5px;
   
-  progress[value] {
-    width: 596px;
-    height: 22px;
-    margin-bottom: 48px;
-    appearance: none;
-    margin-right: 10px;
-    margin-left: 30px;
-
-    @media (max-width: 916px) {
-      width: 500px;
-    }
-    @media (max-width: 744px) {
-      width: 400px;
-    }
-    @media (max-width: 640px) {
-
-      width: 300px;
-    }
-    @media (max-width: 506px) {
-      width: 200px;
-    }
-
-    ::-webkit-progress-bar {
-      background-color: white;
-      border-radius: 5px;
-    }
-    ::-webkit-progress-value {
-      background-color: #403d3d;
-      border-radius: 0 5px 5px 0;
-      transition: ease 0.4s;
-    }
-    span {
-      
-      font-style: normal;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 20px;
-    }
+`;
+const ProgressBar = styled.div<{ width: number }>`
+  background-color: #403d3d;
+  border-radius: 0 5px 5px 0;
+  transition: ease 0.4s;
+  color: #403d3d;
+  width: ${props=>(props.width * 3) + 'px'};
+  position: relative;
+  span{
+    position: absolute;
+    right: 0;
+    color: white;
+    margin-right: 9px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
   }
 `;
+
+export { SkillBarsContainer, SkillBar, ProgressBar };

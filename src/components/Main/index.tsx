@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Cards from "./Cards";
 import * as C from "./style";
 import Characteristics from "./Characteristics";
 
-
 export default function Main() {
   const [character, setCharacter] = useState<boolean>(false);
-  const [currentPokemon, setCurrentPokemon] = useState<number>();
+  const [currentPokemon, setCurrentPokemon] = useState<number>(0);
 
-  function onSetCharacter() : void {
+  function onSetCharacter() {
     if (character) setCharacter(false);
     else setCharacter(true);
   }
-  function onSetCurrentPokemon(key : number): void {
+  
+  function onSetCurrentPokemon(key: number) {
     setCurrentPokemon(key);
   }
 
@@ -28,7 +28,7 @@ export default function Main() {
           onSetCharacter={onSetCharacter}
           onSetCurrentPokemon={onSetCurrentPokemon}
         />
-      ) } 
+      )}
     </C.Main>
   );
 }

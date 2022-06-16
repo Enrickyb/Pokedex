@@ -8,7 +8,7 @@ export const CharacteristicsContainer = styled.div`
   justify-content: center;
   height: 80vh;
   padding: 25px;
-  @media (max-width: 1216px) {
+  @media (max-width: 1390px) {
     flex-direction: column;
     height: 100%;
     gap: 50px;
@@ -60,6 +60,9 @@ export const pokemonContainer = styled.div`
 `;
 export const pokemonName = styled.h1`
   margin-bottom: 23px;
+::first-letter{
+  text-transform: uppercase;
+}
 `;
 export const pokemonTypeContainer = styled.div`
   display: flex;
@@ -75,6 +78,8 @@ export const pokemonType = styled.p`
   justify-content: center;
   align-items: center;
   font-family: "Inter", sans-serif;
+
+
 `;
 
 export const statsContainer = styled.div`

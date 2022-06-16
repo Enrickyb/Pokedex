@@ -80,6 +80,10 @@ export const Card = styled.div`
   transition: ease 0.2s;
   img{
     width: 96px;
+
+  }
+  p::first-letter{
+    text-transform: uppercase;
   }
   &:hover {
     transform: scale(1.1);
