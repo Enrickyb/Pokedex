@@ -10,10 +10,11 @@ interface Props{
 
 export default function Cards(props: Props) {
   const { pokeData } = useContext(ApiContext);
+  const { onSetCharacter, onSetCurrentPokemon } = props;
 
   function onShowCards(key: number) {
-    props.onSetCharacter();
-    props.onSetCurrentPokemon(key);
+  onSetCharacter();
+  onSetCurrentPokemon(key);
   }
   function textVerify(text: string) {
     if (text.length > 15) {
@@ -23,6 +24,7 @@ export default function Cards(props: Props) {
       return text;
     }
   }
+  
 
   return (
     <div>
