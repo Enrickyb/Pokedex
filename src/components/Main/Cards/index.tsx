@@ -4,8 +4,8 @@ import { ApiContext } from "../../../context/ApiContext";
 import Pagination from "./Pagination/index";
 
 interface Props{
-  onSetCharacter: any,
-  onSetCurrentPokemon: any,
+  onSetCharacter: any,//
+  onSetCurrentPokemon: any,//
 }
 
 export default function Cards(props: Props) {

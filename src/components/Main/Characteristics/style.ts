@@ -49,20 +49,18 @@ export const pokemonContainer = styled.div`
   @media (max-width: 400px) {
     width: 300px;
     margin: 70px auto 0;
-    
   }
 
   img {
     min-width: 250px;
     margin-bottom: 42;
   }
-
 `;
 export const pokemonName = styled.h1`
   margin-bottom: 23px;
-::first-letter{
-  text-transform: uppercase;
-}
+  ::first-letter {
+    text-transform: uppercase;
+  }
 `;
 export const pokemonTypeContainer = styled.div`
   display: flex;
@@ -78,7 +76,7 @@ export const pokemonType = styled.p`
   justify-content: center;
   align-items: center;
   font-family: "Inter", sans-serif;
-
+  text-transform: capitalize;
 
 `;
 
@@ -88,7 +86,7 @@ export const statsContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 15px;
-  
+
   h1 {
     margin-bottom: 80px;
     font-style: normal;
@@ -97,7 +95,7 @@ export const statsContainer = styled.div`
     line-height: 20px;
     @media (max-width: 1216px) {
       margin-bottom: 40px;
-  }
+    }
   }
 `;
 export const stats = styled.div`
@@ -107,10 +105,9 @@ export const stats = styled.div`
   div {
     display: flex;
     flex-direction: row;
-    
+
     @media (max-width: 1368px) {
-    
-  }
+    }
     & > p {
       width: 26.8px;
       font-style: normal;

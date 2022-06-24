@@ -1,4 +1,10 @@
-export const getPokes = async (url: string): Promise<any> => {
+import { pokeType } from "../context/ApiContext";
+
+type Response = {
+  results: {name: string, url: string}[]
+}
+
+export const getPokes = async (url: string): Promise<Response> => {
   return new Promise((result, error) => {
     fetch(url)
       .then((res) => res.json())
@@ -11,7 +17,7 @@ export const getPokes = async (url: string): Promise<any> => {
   });
 };
 
-export const getPokemon = async (url: string): Promise<any> => {
+export const getPokemon = async (url: string): Promise<pokeType> => {
   return new Promise((result, error) => {
     fetch(url)
       .then((res) => res.json())

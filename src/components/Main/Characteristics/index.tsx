@@ -6,7 +6,7 @@ import { IoMdArrowBack } from "react-icons/io";
 
 
 interface Props{
-  onSetCharacter: any,
+  onSetCharacter: any, // 
   currentPokemon: number
 }
 
@@ -64,7 +64,7 @@ export default function Characteristics(props: Props){
           <C.pokemonTypeContainer> 
             {pokeData[props.currentPokemon].types.map((type, key) => (
               <C.pokemonType key={key}>
-                {type.type.name[0].toUpperCase() + type.type.name.substring(1)}
+                {type.type.name}
               </C.pokemonType>
             ))} 
           </C.pokemonTypeContainer>

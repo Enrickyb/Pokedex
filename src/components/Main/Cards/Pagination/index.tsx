@@ -6,18 +6,9 @@ const MAX_ITEMS = 5;
 let MAX_LEFT = (MAX_ITEMS - 1) / 2;
 
 export default function Pagination() {
-  const {
-    offSet,
-    onSetOffset: setOffSet,
-    limit: limitPages,
-    total: totalPokes,
-  } = useContext(ApiContext);
+  const { offSet, onSetOffset, limit, total } = useContext(ApiContext);
 
-  const offset = offSet;
-  const onSetOffset = setOffSet;
-  const limit = limitPages;
-  const total = totalPokes;
-  const current = offset ? offset / limit + 1 : 1;
+  const current = offSet ? offSet / limit + 1 : 1;
   const pages = Math.ceil(total / limit - 1);
   const maxFirst = Math.max(pages - (MAX_ITEMS - 1), 1);
   const first = Math.min(Math.max(current - MAX_LEFT, 1), maxFirst);
